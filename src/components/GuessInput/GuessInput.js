@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
 
-function GuessInput() {
-  [guess, setGuess] = useState("");
+function GuessInput({handleSubmitGuess}) {
+  [tentativeGuess, setTentativeGuess] = useState("");
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     console.info({guess});
     setGuess("");
+    handleSubmitGuess(guess);
   }
 
   const onChangeHandler = (event) => {
-    setGuess(event.target.value.toUpperCase());
+    setTentativeGuess(event.target.value.toUpperCase());
   }
 
   return (
-    <form className="guess-input-wrapper" onSubmit={onSubmitHandler}>
-      <label htmlFor="guess-input">Enter Guess:</label>
-      <input id="guess-input" type="text" value={guess} onChange={onChangeHandler} pattern='[a-zA-Z]{5}'/>
-    </form>
+    <>
+    <GuessList guesses={guessList}/>
+      <form className="guess-input-wrapper" onSubmit={onSubmitHandler}>
+        <label htmlFor="guess-input">Enter Guess:</label>
+        <input id="guess-input" type="text" value={tentativeGuess} onChange={onChangeHandler} pattern='[a-zA-Z]{5}'/>
+      </form>
+    </>
+
   );
 }
 
