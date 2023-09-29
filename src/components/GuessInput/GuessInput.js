@@ -16,7 +16,7 @@ function GuessInput() {
   return (
     <form className="guess-input-wrapper" onSubmit={onSubmitHandler}>
       <label htmlFor="guess-input">Enter Guess:</label>
-      <input id="guess-input" type="text" value={guess.toUpperCase()} onChange={onChangeHandler} pattern='[a-zA-Z]{5}'/>
+      <input id="guess-input" type="text" value={guess} onChange={onChangeHandler} pattern='[a-zA-Z]{5}'/>
     </form>
   );
 }
