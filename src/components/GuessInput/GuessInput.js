@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function GuessInput({handleSubmitGuess}) {
-  [tentativeGuess, setTentativeGuess] = useState("");
+  [tentativeGuess, setTentativeGuess] = React.useState("");
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    console.info({guess});
-    setGuess("");
-    handleSubmitGuess(guess);
+    console.info({tentativeGuess});
+    setTentativeGuess("");
+    handleSubmitGuess(tentativeGuess);
   }
 
   const onChangeHandler = (event) => {
@@ -15,14 +15,10 @@ function GuessInput({handleSubmitGuess}) {
   }
 
   return (
-    <>
-    <GuessList guesses={guessList}/>
-      <form className="guess-input-wrapper" onSubmit={onSubmitHandler}>
-        <label htmlFor="guess-input">Enter Guess:</label>
-        <input id="guess-input" type="text" value={tentativeGuess} onChange={onChangeHandler} pattern='[a-zA-Z]{5}'/>
-      </form>
-    </>
-
+    <form className="guess-input-wrapper" onSubmit={onSubmitHandler}>
+      <label htmlFor="guess-input">Enter Guess:</label>
+      <input id="guess-input" type="text" value={tentativeGuess} onChange={onChangeHandler} pattern='[a-zA-Z]{5}'/>
+    </form>
   );
 }
 
