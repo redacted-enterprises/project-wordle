@@ -1,22 +1,12 @@
 import React from 'react';
 import { range } from '../../utils';
 
-function Guess({guess}) {
-  let splitGuess;
-
-  if (guess) {
-    splitGuess = [...guess].map((letter) => {
-      return (<span key={`${letter}-${Math.random()}`} class="cell">{letter}</span>)
-    });
-  } else {
-    splitGuess = range(5).map((i) => {
-      return (<span key={`${i}-${Math.random()}`} class="cell">{""}</span>)
-    })
-  }
-
+function Guess({guess, key}) {
   return (
-    <p class="guess">
-      {...splitGuess}
+    <p key={key} class="guess">
+      {range(5).map((i) => {
+        return <span key={`${i}-${Math.random()}`} className="cell">{guess ? guess[i] : undefined}</span>
+      })}
     </p>
   );
 }
